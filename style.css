@@ -12,8 +12,6 @@ body {
     background-color: black;
 }
 
-/* Game Area */
-
 .game {
     width: 390px;
     height: 500px;
@@ -54,17 +52,19 @@ body {
 }
 
 .bullet {
-    width: 30px;
-    height: 40px;
+    width: 70px;
+    height: 50px;
     position: absolute;
     text-align: center;
     animation: fire 0.8s linear forwards;
 }
 
 .bulletImg {
-    width: 25px;
+    width: 45px;
     height: 35px;
     object-fit: contain;
+    transform: rotate(-90deg);
+
 }
 
 @keyframes fire {
@@ -72,7 +72,7 @@ body {
     0% {
         transform: translateY(0);
     }
-
+p
     100% {
         transform: translateY(-450px);
     }

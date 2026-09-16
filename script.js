@@ -23,7 +23,7 @@ document.addEventListener("keydown", function (e) {
 
     player.style.left = playerX + "px";
 
-    if (e.code === "Space") {
+    if (e.code === "Space" && gameOver.style.display !== "block") {
         shoot();
     }
 });
