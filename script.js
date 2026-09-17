@@ -10,6 +10,10 @@ let alienY = 20;
 
 document.addEventListener("keydown", function (e) {
 
+    if (gameOver.style.display === "block") {
+        return;
+    }
+
     if (e.key === "ArrowLeft") {
         playerX -= 20;
     }
@@ -84,7 +88,7 @@ setInterval(function () {
     if (alien.style.display === "none") return;
     alienY += 2;
     alien.style.top = alienY + "px";
-    if (alienY > 400) {
+    if (alienY > 470) {
         gameOver.style.display = "block";
     }
 }, 30);
