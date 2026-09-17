@@ -4,7 +4,7 @@ const game = document.getElementById("game");
 const scoreText = document.getElementById("score");
 const gameOver = document.getElementById("gameOver");
 
-let playerX = 130;
+let playerX = 180;
 let score = 0;
 let alienY = 20;
 
@@ -19,7 +19,7 @@ document.addEventListener("keydown", function (e) {
     }
 
     if (playerX < 0) playerX = 0;
-    if (playerX > 260) playerX = 260;
+    if (playerX > 490) playerX = 490;
 
     player.style.left = playerX + "px";
 
