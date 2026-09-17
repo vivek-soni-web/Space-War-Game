@@ -19,7 +19,7 @@ document.addEventListener("keydown", function (e) {
     }
 
     if (playerX < 0) playerX = 0;
-    if (playerX > 490) playerX = 490;
+    if (playerX > 410) playerX = 410;
 
     player.style.left = playerX + "px";
 
@@ -38,23 +38,23 @@ function shoot() {
         <img src="bullet.png" class="bulletImg">
     `;
 
-    bullet.style.left = playerX + 50 + "px";
-    bullet.style.top = "390px";
+    bullet.style.left = playerX + 10 + "px";
+    bullet.style.top = "5px";
 
     game.appendChild(bullet);
 
-    let bulletY = 390;
+    let bulletY = 410;
 
     const moveBullet = setInterval(function () {
 
-        bulletY -= 10;
+        bulletY -= 9;
         bullet.style.top = bulletY + "px";
 
         if (
-            bulletY < alienY + 60 &&
+            bulletY < alienY + 10 &&
             bulletY > alienY &&
-            playerX + 100 > alien.offsetLeft &&
-            playerX < alien.offsetLeft + 100
+            playerX + 20 > alien.offsetLeft &&
+            playerX < alien.offsetLeft + 20
         ) {
             clearInterval(moveBullet);
             bullet.remove();

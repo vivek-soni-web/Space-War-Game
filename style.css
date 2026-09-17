@@ -24,11 +24,11 @@ body {
 }
 
 .player {
-    width: 130px;
+    width: 120px;
     height: 80px;
     position: absolute;
-    top: 420px;
-    left: 130px;
+    top: 480px;
+    left: 180px;
     text-align: center;
 }
 
@@ -52,19 +52,32 @@ body {
 }
 
 .bullet {
-    width: 70px;
-    height: 50px;
+    width: 90px;
+    height: 70px;
     position: absolute;
     text-align: center;
     animation: fire 0.8s linear forwards;
 }
 
 .bulletImg {
-    width: 45px;
-    height: 35px;
+    width: 65px;
+    height: 45px;
     object-fit: contain;
     transform: rotate(-90deg);
+
 }
+
+@keyframes fire {
+
+    0% {
+        transform: translateY(0);
+    }
+p
+    100% {
+        transform: translateY(-540px);
+    }
+}
+
 .score {
     position: absolute;
     top: 10px;
@@ -85,6 +98,7 @@ body {
     font-size: 35px;
     font-weight: bold;
     text-align: center;
+    z-index: 20;
 }
 
 .gameOver button {
