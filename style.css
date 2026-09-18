@@ -6,15 +6,18 @@
 
 body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     background-color: black;
+    overflow: hidden;
+    touch-action: none;
 }
 
 .game {
-    width: 540px;
-    height: 600px;
+    width: min(540px, 100vw);
+    height: min(600px, 82vh);
     background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ_1jZZCnovTETfQxW70KPyVEniJyyj_x1xpLCIeHZtCRMy8GYgxcIE24&s=10");
     background-size: cover;
     background-position: center;
@@ -27,14 +30,16 @@ body {
     width: 120px;
     height: 80px;
     position: absolute;
-    top: 480px;
+    top: calc(100% - 80px);
     left: 180px;
     text-align: center;
+    z-index: 5;
 }
 
 .player img {
     width: 90px;
     height: 50px;
+    object-fit: contain;
 }
 
 .alien {
@@ -44,11 +49,13 @@ body {
     top: 20px;
     left: 130px;
     text-align: center;
+    z-index: 5;
 }
 
 .alien img {
     width: 70px;
     height: 40px;
+    object-fit: contain;
 }
 
 .bullet {
@@ -56,7 +63,7 @@ body {
     height: 70px;
     position: absolute;
     text-align: center;
-    animation: fire 0.8s linear forwards;
+    z-index: 4;
 }
 
 .bulletImg {
@@ -64,24 +71,12 @@ body {
     height: 45px;
     object-fit: contain;
     transform: rotate(-90deg);
-
-}
-
-@keyframes fire {
-
-    0% {
-        transform: translateY(0);
-    }
-p
-    100% {
-        transform: translateY(-540px);
-    }
 }
 
 .score {
     position: absolute;
     top: 10px;
-    left: 10px;
+    right: 10px;
     color: white;
     font-size: 20px;
     font-family: Arial, sans-serif;
@@ -106,4 +101,83 @@ p
     padding: 10px 20px;
     font-size: 18px;
     cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+.mobileControls {
+
+    width: min(540px, 100vw);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 25px;
+    margin-top: 5px;
+}
+
+.controlBtn,
+.fireBtn {
+    width: 75px;
+    height: 50px;
+    background-color: #222;
+    color: white;
+    border: 2px solid white;
+    border-radius: 10px;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.fireBtn {
+    width: 100px;
+    background-color: darkred;
+}
+
+.controlBtn:active,
+.fireBtn:active {
+    transform: scale(0.90);
+}
+
+@media (max-width: 600px) {
+    body {
+        justify-content: flex-start;
+        padding-top: 10px;
+    }
+    .game {
+        width: 100vw;
+        height: 78vh;
+    }
+    .mobileControls {
+        display: flex;
+        width: 100vw;
+        padding: 12px 25px;
+        margin-top: 5px;
+    }
+    .score {
+        font-size: 18px;
+    }
+    .gameOver {
+        font-size: 28px;
+    }
+}
+
+@media (max-height: 650px) {
+
+    .game {
+        height: 72vh;
+    }
+    .mobileControls {
+        padding: 8px 20px;
+    }
+    .controlBtn {
+        width: 65px;
+        height: 45px;
+    }
+    .fireBtn {
+        width: 90px;
+        height: 48px;
+    }
 }
