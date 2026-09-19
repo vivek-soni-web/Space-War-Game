@@ -7,11 +7,12 @@ const leftBtn = document.getElementById("leftBtn");
 const rightBtn = document.getElementById("rightBtn");
 const fireBtn = document.getElementById("fireBtn");
 
-let playerX = 200;
+let playerX = 480;
 let score = 0;
 let alienY = 20;
 let movingLeft = false;
 let movingRight = false;
+let alienHit = false;
 
 function movePlayer() {
 
@@ -155,18 +156,14 @@ function shoot() {
             bullet.style.top =
                 bulletY + "px";
 
-
-            if (
-
-                bulletY < alienY + 40 &&
-                bulletY > alienY &&
-                playerX + 80 >
-                alien.offsetLeft &&
-                playerX <
-                alien.offsetLeft + 70
-
-            ) {
-
+if (
+    !alienHit &&
+    bulletY < alienY + alien.offsetHeight &&
+    bulletY + bullet.offsetHeight > alienY &&
+    playerX + player.offsetWidth > alien.offsetLeft &&
+    playerX < alien.offsetLeft + alien.offsetWidth
+) {
+                alienHit = true;
                 clearInterval(moveBullet);
 
                 bullet.remove();
@@ -191,13 +188,14 @@ function shoot() {
                         alienY + "px";
                     alien.style.display =
                         "block";
-                }, 300);
+                    alienHit = false;
+                }, 400);
             }
-            if (bulletY < -70) {
+            if (bulletY < 70) {
                 clearInterval(moveBullet);
                 bullet.remove();
             }
-        }, 30);
+        }, 15);
 }
 
 setInterval(function () {
@@ -220,4 +218,4 @@ setInterval(function () {
         movingLeft = false;
         movingRight = false;
     }
-}, 30);
+}, 10);
